@@ -12,7 +12,7 @@ Clothing::Clothing(const std::string name, double price, int qty,
 
 template set<string> setUnion<string>(set<string>&, set<string>&);
 
-std::set<std::string> Clothing::keywords()
+std::set<std::string> Clothing::keywords() const
 {
     set<string> keywords;
     // product general
@@ -26,7 +26,7 @@ std::set<std::string> Clothing::keywords()
     return keywords;
 }
 
-std::string Clothing::displayString()
+std::string Clothing::displayString() const
 {
     return name_ + 
            "\nSize: " + size_ + " Brand: " + brand_ + "\n" + 

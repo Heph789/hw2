@@ -12,7 +12,7 @@ Book::Book(const std::string name, double price, int qty,
 
 template set<string> setUnion<string>(set<string>&, set<string>&);
 
-std::set<std::string> Book::keywords()
+std::set<std::string> Book::keywords() const
 {
     set<string> keywords;
     // product general
@@ -27,7 +27,7 @@ std::set<std::string> Book::keywords()
     return keywords;
 }
 
-std::string Book::displayString()
+std::string Book::displayString() const
 {
     return name_ + 
            "\nAuthor: " + author_ + " ISBN: " + isbn_ + "\n" + 

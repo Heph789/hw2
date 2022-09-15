@@ -7,11 +7,9 @@ public:
     Movie(const std::string name, double price, int qty,
          const std::string genre, const std::string rating);
     
-    std::set<std::string> keywords();
+    std::set<std::string> keywords() const;
 
-    bool isMatch(std::vector<std::string>& searchTerms);
-
-    std::string displayString();
+    std::string displayString() const;
 
     void dump(std::ostream& os);
 

@@ -12,7 +12,7 @@ Movie::Movie(const std::string name, double price, int qty,
 
 template set<string> setUnion<string>(set<string>&, set<string>&);
 
-std::set<std::string> Movie::keywords()
+std::set<std::string> Movie::keywords() const
 {
     set<string> keywords;
     // product general
@@ -25,7 +25,7 @@ std::set<std::string> Movie::keywords()
     return keywords;
 }
 
-std::string Movie::displayString()
+std::string Movie::displayString() const
 {
     return name_ + 
            "\nAuthor: " + rating_ + " ISBN: " + genre_ + "\n" + 

@@ -19,7 +19,7 @@ std::set<std::string> Book::keywords() const
     keywords.insert(category_);
     set<string> parsedName = parseStringToWords(name_);
     // book specific
-    keywords.insert(isbn_);
+    keywords.insert(convToLower(isbn_));
     set<string> parsedAuthor = parseStringToWords(author_);
 
     keywords = setUnion(keywords, parsedName);

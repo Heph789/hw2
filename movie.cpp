@@ -19,7 +19,7 @@ std::set<std::string> Movie::keywords() const
     keywords.insert(category_);
     set<string> parsedName = parseStringToWords(name_);
     // movie specific
-    keywords.insert(genre_);
+    keywords.insert(convToLower(genre_));
 
     keywords = setUnion(keywords, parsedName);
     return keywords;

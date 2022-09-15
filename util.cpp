@@ -19,6 +19,7 @@ std::set<std::string> parseStringToWords(string rawWords)
     string word = "";
     for (long unsigned int i = 0; i<rawWords.size(); i++) {
         char c = rawWords[i];
+        // NOTE: change this section to use 'convToLower()' func
         if (isalpha(c)) {
             word += (char)tolower(c); // changes all keywords to lowercase
         }

@@ -103,9 +103,9 @@ int main(int argc, char* argv[])
 	    /* Add support for other commands here */
             else if ( cmd == "ADD") {
                 string username;
-                int hitIndex; 
+                int hitIndex;
                 // if input is invalid, don't process request
-                if (!(ss >> username && ss >> hitIndex) || --hitIndex < 0 || hitIndex >= hits.size() || !ds.add(convToLower(username), hits[hitIndex])) {
+                if (!(ss >> username && ss >> hitIndex) || --hitIndex < 0 || (size_t)hitIndex >= hits.size() || !ds.add(convToLower(username), hits[hitIndex])) {
                     cout << "Invalid request." << endl;
                 }
             }

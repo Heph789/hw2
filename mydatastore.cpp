@@ -61,7 +61,7 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
     }
     
     set<Product*> base;
-    for(int i = 0; i < terms.size(); ++i) {
+    for(size_t i = 0; i < terms.size(); ++i) {
         string &term = terms[i];
         std::map<std::string, std::set<Product*> >::iterator setIt = prodMap.find(term);
 

@@ -16,7 +16,6 @@ std::set<std::string> Book::keywords() const
 {
     set<string> keywords;
     // product general
-    keywords.insert(category_);
     set<string> parsedName = parseStringToWords(name_);
     // book specific
     keywords.insert(convToLower(isbn_));
@@ -34,14 +33,9 @@ std::string Book::displayString() const
            to_string(price_) + " " + to_string(qty_) + " left.";
 }
 
-void Book::dump(std::ostream& os)
+void Book::dump(std::ostream& os) const
 {
-    string db;
-    db = category_ + "\n" +
-         name_ + "\n" +
-         to_string(price_) + "\n" +
-         to_string(qty_) + "\n" +
-         isbn_ + "\n" +
-         author_ + "\n";
-    os << db;
+    Product::dump(os);
+    os << isbn_ + "\n"
+       << author_ + "\n";
 }

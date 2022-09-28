@@ -16,7 +16,6 @@ std::set<std::string> Movie::keywords() const
 {
     set<string> keywords;
     // product general
-    keywords.insert(category_);
     set<string> parsedName = parseStringToWords(name_);
     // movie specific
     keywords.insert(convToLower(genre_));
@@ -32,14 +31,9 @@ std::string Movie::displayString() const
            to_string(price_) + " " + to_string(qty_) + " left.";
 }
 
-void Movie::dump(std::ostream& os)
+void Movie::dump(std::ostream& os) const
 {
-    string db;
-    db = category_ + "\n" +
-         name_ + "\n" +
-         to_string(price_) + "\n" +
-         to_string(qty_) + "\n" +
-         genre_ + "\n" +
-         rating_ + "\n";
-    os << db;
+    Product::dump(os);
+    os << genre_ + "\n"
+       << rating_ + "\n";
 }

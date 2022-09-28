@@ -5,7 +5,7 @@ using namespace std;
 
 Clothing::Clothing(const std::string name, double price, int qty,
                    const std::string size, const std::string brand) 
-                   : Product("book", name, price, qty), size_(size), brand_(brand)
+                   : Product("clothing", name, price, qty), size_(size), brand_(brand)
 {
 
 }
@@ -16,7 +16,6 @@ std::set<std::string> Clothing::keywords() const
 {
     set<string> keywords;
     // product general
-    keywords.insert(category_);
     set<string> parsedName = parseStringToWords(name_);
     // clothing specific
     set<string> parsedBrand = parseStringToWords(brand_);
@@ -33,14 +32,9 @@ std::string Clothing::displayString() const
            to_string(price_) + " " + to_string(qty_) + " left.";
 }
 
-void Clothing::dump(std::ostream& os)
+void Clothing::dump(std::ostream& os) const
 {
-    string db;
-    db = category_ + "\n" +
-         name_ + "\n" +
-         to_string(price_) + "\n" +
-         to_string(qty_) + "\n" +
-         size_ + "\n" +
-         brand_ + "\n";
-    os << db;
+    Product::dump(os);
+    os << size_ + "\n"
+       << brand_ + "\n";
 }

@@ -11,7 +11,7 @@ public:
 
     std::string displayString() const;
 
-    void dump(std::ostream& os);
+    void dump(std::ostream& os) const;
 
 private:
     std::string size_;

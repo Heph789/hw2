@@ -6,7 +6,14 @@ using namespace std;
 
 MyDataStore::~MyDataStore()
 {
-
+    set<Product*>::iterator sit;
+    for(sit = prodSet.begin(); sit != prodSet.end(); sit++) {
+        delete (*sit);
+    }
+    std::map<std::string, std::pair<User*, std::list<Product*> > >::iterator uit;
+    for(uit = userMap.begin(); uit != userMap.end(); uit++) {
+        delete uit->second.first;
+    }
 }
 
 /**
@@ -64,6 +71,12 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
     for(size_t i = 0; i < terms.size(); ++i) {
         string &term = terms[i];
         std::map<std::string, std::set<Product*> >::iterator setIt = prodMap.find(term);
+        set<Product*> second;
+
+        // continue onto next term if this one does not exist
+        if (setIt != prodMap.end()) {
+            second = setIt->second;
+        }
 
         // if this is the first valid term, set it to base
         if (i == 0) {
@@ -71,13 +84,13 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
         }
         else {
             if (!type) { // AND
-                base = setIntersection(base, setIt->second);
+                base = setIntersection(base, second);
                 if(base.empty()) { // since the first time and intersection yields an empty set, we know that every term afterwards doesn't matter
                     break;
                 }
             }
             else { // OR
-                base = setUnion(base, setIt->second);
+                base = setUnion(base, second);
             }
         }
     }
@@ -104,6 +117,7 @@ void MyDataStore::dump(std::ostream& ofile)
     for(uit = userMap.begin(); uit != userMap.end(); uit++) {
         uit->second.first->dump(ofile);
     }
+    ofile << "</users>";
 }
 
 /**

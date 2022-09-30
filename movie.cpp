@@ -27,7 +27,7 @@ std::set<std::string> Movie::keywords() const
 std::string Movie::displayString() const
 {
     return name_ + 
-           "\nAuthor: " + rating_ + " ISBN: " + genre_ + "\n" + 
+           "\nGenre: " + genre_ + " Rating: " + rating_ + "\n" + 
            to_string(price_) + " " + to_string(qty_) + " left.";
 }
 

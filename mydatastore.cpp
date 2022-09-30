@@ -67,7 +67,7 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
 
         // if this is the first valid term, set it to base
         if (i == 0) {
-            base = setIt->second; // NOTE: this might not work since setIt->first might come off stack leaving base pointing to junk
+            base = setIt->second;
         }
         else {
             if (!type) { // AND

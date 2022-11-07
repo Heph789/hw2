@@ -71,12 +71,8 @@ std::vector<Product*> MyDataStore::search(std::vector<std::string>& terms, int t
     for(size_t i = 0; i < terms.size(); ++i) {
         string &term = terms[i];
         std::map<std::string, std::set<Product*> >::iterator setIt = prodMap.find(term);
-        set<Product*> second;
-
-        // continue onto next term if this one does not exist
-        if (setIt != prodMap.end()) {
-            second = setIt->second;
-        }
+        if (setIt == prodMap.end()) continue;
+        set<Product*> second = setIt->second;
 
         // if this is the first valid term, set it to base
         if (i == 0) {
